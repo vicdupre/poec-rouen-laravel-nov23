@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExempleController;
+use App\Http\Controllers\IngredientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,10 @@ Route::get("/products", [ExempleController::class, 'products'])->name("products"
 Route::get("/client", function () {
     return view("layout.client");
 });
+
+Route::get("/ingredients", [IngredientController::class, "index"])
+    ->name("ingredients");
+Route::get("/ingredients/create", [IngredientController::class, "create"])
+    ->name("ingredients.create");
+Route::post("/ingredients", [IngredientController::class, "store"])
+    ->name("ingredients.store");
