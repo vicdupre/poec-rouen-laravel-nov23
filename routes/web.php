@@ -29,3 +29,5 @@ Route::get("/ingredients/create", [IngredientController::class, "create"])
     ->name("ingredients.create");
 Route::post("/ingredients", [IngredientController::class, "store"])
     ->name("ingredients.store");
+Route::delete("/ingredients/{id}", [IngredientController::class, "destroy"])
+    ->name("ingredients.destroy");

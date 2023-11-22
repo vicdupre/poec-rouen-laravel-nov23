@@ -13,7 +13,7 @@
         <nav>
             <a href="{{ route('home') }}">Acceuil</a>
             <a href="{{ route('products') }}">Produits</a>
-            <a href="{{ route('products') }}">Client</a>
+            <a href="{{ route('ingredients') }}">Ingrédients</a>
         </nav>
     </header>
     <main>

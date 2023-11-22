@@ -59,4 +59,10 @@ class IngredientController extends Controller
         Ingredient::create($data);
         return redirect()->route("ingredients");
     }
+
+    public function destroy($id)
+    {
+        Ingredient::destroy($id);
+        return redirect()->route("ingredients");
+    }
 }
