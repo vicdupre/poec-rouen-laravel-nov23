@@ -1,4 +1,5 @@
-@extends("layout.app")
+@extends("layout.client")
+@section("title", "Mes produits")
 
 @section("content")
 <h1>{{ $name }}</h1>

@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    background-color: #5e6472;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    height: 80px;
+    padding: 0 2.5%;
+}
+
+nav a {
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #aed9e0;
+}

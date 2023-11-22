@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ExempleController::class, 'index']);
+Route::get('/', [ExempleController::class, 'index'])->name("home");
 
-Route::get("/products", [ExempleController::class, 'products']);
+Route::get("/products", [ExempleController::class, 'products'])->name("products");
+
+Route::get("/client", function () {
+    return view("layout.client");
+});
