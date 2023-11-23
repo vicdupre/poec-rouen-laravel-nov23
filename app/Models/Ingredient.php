@@ -20,4 +20,9 @@ class Ingredient extends Model
 
     ];
     protected $guarded = [];
+
+    public function recettes()
+    {
+        return $this->belongsToMany(Recette::class);
+    }
 }

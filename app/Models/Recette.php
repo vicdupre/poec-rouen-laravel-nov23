@@ -13,6 +13,17 @@ class Recette extends Model
     protected $fillable = [
         "name",
         "difficulty",
-        "time_to_prepare"
+        "time_to_prepare",
+        "category_id"
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function ingredients()
+    {
+        return $this->belongsToMany(Ingredient::class);
+    }
 }

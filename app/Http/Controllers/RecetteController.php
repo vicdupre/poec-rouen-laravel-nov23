@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Ingredient;
 use App\Models\Recette;
 
 use Illuminate\Http\Request;
@@ -14,7 +16,7 @@ class RecetteController extends Controller
     {
         //Afficher une vue avec tous les ingrédients
 
-        $recettes = Recette::all();
+        $recettes = Recette::with(["category", "ingredients"])->get();
 
         return view("recettes.index", ["recettes" => $recettes]);
     }
@@ -22,7 +24,17 @@ class RecetteController extends Controller
     public function create()
     {
         //Afficher une vue avec un formulaire d'ajout
-        return view("recettes.create");
+
+        $categories = Category::all();
+        $ingredients = Ingredient::all();
+
+        return view(
+            "recettes.create",
+            [
+                "categories" => $categories,
+                "ingredients" => $ingredients
+            ]
+        );
     }
 
     public function store(Request $request)
@@ -37,6 +49,8 @@ class RecetteController extends Controller
                 "name" => ["required", "string", "min:2"],
                 "difficulty" => ["required", "integer", "numeric", "min:0", "max:4"],
                 "time_to_prepare" => ["required",  "integer", "numeric", "min:1"],
+                "category_id" => ["required", "exists:categories,id"],
+                "ingredients" => ["required", "array"]
             ],
             //Messages d'erreur personnalisés par règle
             [
@@ -61,7 +75,8 @@ class RecetteController extends Controller
         $data = $validator->validated();
         Log::debug($request->all());
         Log::debug($data);
-        Recette::create($data);
+        $recette = Recette::create($data);
+        $recette->ingredients()->attach($data['ingredients']);
         return redirect()->route("recettes");
     }
 

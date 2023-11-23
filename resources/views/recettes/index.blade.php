@@ -11,7 +11,11 @@
     </a>
     <ul>
         @foreach ($recettes as $recette )
-        <li>{{ $recette->name }} {{$recette->time_to_prepare}} min
+        <li>{{ $recette->name }} {{$recette->time_to_prepare}} min | {{ $recette->category->name }} |
+            @foreach ($recette->ingredients as $ingredient)
+            {{ $ingredient->name }},
+            @endforeach
+
             <form action="{{ route('recettes.destroy', $recette->id) }}" method="post">
                 @csrf
                 @method("DELETE")
