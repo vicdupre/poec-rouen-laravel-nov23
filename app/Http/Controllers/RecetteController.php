@@ -16,7 +16,16 @@ class RecetteController extends Controller
     {
         //Afficher une vue avec tous les ingrédients
 
-        $recettes = Recette::with(["category", "ingredients"])->get();
+        $query = Recette::with(["category", "ingredients"]);
+
+        if (false) {
+            $query->where("time_to_prepare", "<=", 10);
+        }
+
+
+
+
+        $recettes = $query->get();
 
         return view("recettes.index", ["recettes" => $recettes]);
     }
