@@ -12,7 +12,7 @@
     <header>
         <nav>
             <a href="{{ route('home') }}">Acceuil</a>
-            <a href="{{ route('products') }}">Produits</a>
+
             <a href="{{ route('ingredients') }}">Ingrédients</a>
             <a href="{{ route('recettes') }}">Recettes</a>
             <a href="{{ route('categories') }}">Catégories</a>
