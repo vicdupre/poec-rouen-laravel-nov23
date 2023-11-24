@@ -65,6 +65,8 @@ class RecetteController extends Controller
             ]
         );
 
+
+
         if ($validator->fails()) {
             Log::debug($validator->errors());
 
@@ -72,6 +74,17 @@ class RecetteController extends Controller
         }
 
         $data = $validator->validated();
+        $display_time = $data["time_to_prepare"] . " minutes";
+
+        if ($request->time_unit === "hour") {
+            $display_time = $data["time_to_prepare"] . " heures";
+            $data["time_to_prepare"] = $data["time_to_prepare"] * 60;
+        }
+
+        $data["display_time"] = $display_time;
+
+
+
         $data["user_id"] = Auth::id();
         Log::debug($request->all());
         Log::debug($data);

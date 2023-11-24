@@ -27,6 +27,11 @@
                         </select>
                         <label for="time_to_prepare">Temps de préparation :</label>
                         <input id="time_to_prepare" name="time_to_prepare" type="number" required />
+                        <label for="time_unit">Unité</label>
+                        <select id="time_unit" name="time_unit">
+                            <option value="min">minutes</option>
+                            <option value="hour">heures</option>
+                        </select>
                         <label for="category_id">Catégorie :</label>
                         <select id="category_id" name="category_id">
                             @foreach ($categories as $category)

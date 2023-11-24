@@ -15,7 +15,8 @@ class Recette extends Model
         "difficulty",
         "time_to_prepare",
         "category_id",
-        "user_id"
+        "user_id",
+        "display_time"
     ];
 
     public function category()
