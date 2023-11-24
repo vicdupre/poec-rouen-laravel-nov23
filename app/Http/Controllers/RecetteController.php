@@ -16,7 +16,7 @@ class RecetteController extends Controller
     public function index()
     {
         //Afficher une vue avec tous les ingrédients
-        $recettes = Recette::with(["category", "ingredients"])->get();
+        $recettes = Recette::with(["category", "ingredients"])->where("user_id", Auth::id())->get();
         return view("recettes.index", ["recettes" => $recettes]);
     }
 
