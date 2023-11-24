@@ -16,11 +16,15 @@
             {{ $ingredient->name }},
             @endforeach
 
-            <form action="{{ route('recettes.destroy', $recette->id) }}" method="post">
+            @auth
+            @if (Auth::id() == $recette->user_id)
+            <form action="{{ route('recettes.destroy',$recette->id ) }}" method="post">
                 @csrf
                 @method("DELETE")
                 <button type="submit">Supprimer</button>
             </form>
+            @endif
+            @endauth
         </li>
         @endforeach
     </ul>

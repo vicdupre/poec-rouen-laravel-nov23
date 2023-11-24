@@ -29,13 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get("/recettes/create", [RecetteController::class, "create"])->name("recettes.create");
+    Route::post("/recettes", [RecetteController::class, "store"])->name("recettes.store");
+    Route::delete("/recettes/{id}", [RecetteController::class, "destroy"])->name("recettes.destroy");
 });
 
 // Routes pour les recettes 
 Route::get("/recettes", [RecetteController::class, "index"])->name("recettes");
-Route::get("/recettes/create", [RecetteController::class, "create"])->name("recettes.create");
-Route::post("/recettes", [RecetteController::class, "store"])->name("recettes.store");
-Route::delete("/recettes/{id}", [RecetteController::class, "destroy"])->name("recettes.destroy");
 
 
 // Routes pour les ingrédients 

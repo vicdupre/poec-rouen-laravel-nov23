@@ -7,6 +7,7 @@ use App\Models\Ingredient;
 use App\Models\Recette;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -71,16 +72,22 @@ class RecetteController extends Controller
         }
 
         $data = $validator->validated();
+        $data["user_id"] = Auth::id();
         Log::debug($request->all());
         Log::debug($data);
         $recette = Recette::create($data);
         $recette->ingredients()->attach($data['ingredients']);
+
         return redirect()->route("recettes");
     }
 
     public function destroy($id)
     {
-        Recette::destroy($id);
+        $recette = Recette::find($id);
+        if ($recette->user_id != Auth::id()) {
+            return abort(401);
+        }
+        $recette->delete();
         return redirect()->route("recettes");
     }
 }

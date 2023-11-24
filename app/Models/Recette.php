@@ -14,7 +14,8 @@ class Recette extends Model
         "name",
         "difficulty",
         "time_to_prepare",
-        "category_id"
+        "category_id",
+        "user_id"
     ];
 
     public function category()
@@ -25,5 +26,10 @@ class Recette extends Model
     public function ingredients()
     {
         return $this->belongsToMany(Ingredient::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
