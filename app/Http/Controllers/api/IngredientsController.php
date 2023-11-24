@@ -36,8 +36,6 @@ class IngredientsController extends Controller
         );
 
         if ($validator->fails()) {
-
-
             return response()->json($validator->errors(), 400);
         }
 
@@ -65,6 +63,7 @@ class IngredientsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $validator = Validator::make(
             //La donnée à valider
             $request->all(),
@@ -75,8 +74,6 @@ class IngredientsController extends Controller
         );
 
         if ($validator->fails()) {
-
-
             return response()->json($validator->errors(), 400);
         }
 

@@ -94,9 +94,8 @@ class RecetteController extends Controller
         return redirect()->route("recettes");
     }
 
-    public function destroy($id)
+    public function destroy(Recette $recette)
     {
-        $recette = Recette::find($id);
         if ($recette->user_id != Auth::id()) {
             return abort(401);
         }
