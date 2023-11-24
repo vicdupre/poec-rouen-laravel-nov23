@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource("/recettes", RecetteController::class);
+//Route::apiResource("recettes.ingredients", RecetteController::class);
